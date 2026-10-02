@@ -111,7 +111,7 @@ export default function FeaturedProjects() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.05 }}
               whileHover={{ y: -4 }}
-              className={`rounded-[24px] border border-[var(--card-border)] bg-[var(--card-solid)] p-5 sm:p-6 flex flex-col justify-between group shadow-sm hover:shadow-md ${theme.accentBorder} transition-all ${
+              className={`rounded-[24px] border border-[var(--card-border)] bg-[var(--card-solid)] p-5 sm:p-6 flex flex-col justify-between group shadow-sm hover:shadow-md ${theme.accentBorder} transition-all active:scale-[0.98] ${
                 isSpan ? 'lg:col-span-1' : ''
               }`}
             >
@@ -153,7 +153,7 @@ export default function FeaturedProjects() {
               <div className="pt-3 border-t border-[var(--card-border)]/60">
                 <Link
                   href={`/projects/${project.id}`}
-                  className="w-full py-2.5 px-3 rounded-xl border border-[var(--card-border)] bg-[var(--bg-page)] hover:bg-amber-500/10 hover:border-amber-500/40 text-xs font-bold text-[var(--text-primary)] hover:text-amber-500 flex items-center justify-between transition-colors group/link"
+                  className="w-full py-2.5 px-3 rounded-xl border border-[var(--card-border)] bg-[var(--bg-page)] hover:bg-amber-500/10 hover:border-amber-500/40 active:scale-[0.98] text-xs font-bold text-[var(--text-primary)] hover:text-amber-500 flex items-center justify-between transition-all group/link"
                 >
                   <span>{language === 'kh' ? 'មើលព័ត៌មានលម្អិត' : 'View Project Details'}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />

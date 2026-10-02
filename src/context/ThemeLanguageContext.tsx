@@ -20,8 +20,6 @@ interface ThemeLanguageContextType {
   setActiveService: (service: ServiceItem | null) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  resumeOpen: boolean;
-  setResumeOpen: (open: boolean) => void;
 }
 
 const ThemeLanguageContext = createContext<ThemeLanguageContextType | undefined>(undefined);
@@ -30,7 +28,6 @@ export function ThemeLanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('kh'); // Default to Khmer as requested by user
   const [theme, setTheme] = useState<Theme>('dark'); // Sleek futuristic dark mode default
   const [searchOpen, setSearchOpen] = useState(false);
-  const [resumeOpen, setResumeOpen] = useState(false);
   const [activeTool, setActiveTool] = useState<ToolItem | null>(null);
   const [activeService, setActiveService] = useState<ServiceItem | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -116,8 +113,6 @@ export function ThemeLanguageProvider({ children }: { children: ReactNode }) {
         setActiveService,
         searchQuery,
         setSearchQuery,
-        resumeOpen,
-        setResumeOpen,
       }}
     >
       {children}

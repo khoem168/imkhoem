@@ -39,6 +39,7 @@ export default function ServiceOrderSheet({ item, onClose }: ServiceOrderSheetPr
   const [accountId, setAccountId] = useState('');
   const [serverId, setServerId] = useState('');
   const [copiedTx, setCopiedTx] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   if (!item) return null;
 
@@ -53,13 +54,15 @@ export default function ServiceOrderSheet({ item, onClose }: ServiceOrderSheetPr
 
   const handleNextFromPackage = () => {
     setStep('account');
+    setErrorMsg('');
   };
 
   const handleNextFromAccount = () => {
     if (!accountId.trim()) {
-      alert(language === 'kh' ? 'សូមវាយបញ្ចូល Game ID ឬ Telegram Username' : 'Please enter Game ID or Username');
+      setErrorMsg(language === 'kh' ? 'សូមវាយបញ្ចូល Game ID ឬ Telegram Username' : 'Please enter Game ID or Username');
       return;
     }
+    setErrorMsg('');
     setStep('payment');
   };
 
@@ -94,6 +97,9 @@ export default function ServiceOrderSheet({ item, onClose }: ServiceOrderSheetPr
           className="w-full max-w-lg rounded-[28px] border border-white/20 dark:border-white/10 bg-[var(--card-solid)] text-[var(--text-primary)] shadow-2xl overflow-hidden relative flex flex-col max-h-[90vh]"
           onClick={(e) => e.stopPropagation()}
         >
+          {/* Mobile Sheet Grabber Handle */}
+          <div className="w-12 h-1.5 rounded-full bg-stone-300 dark:bg-stone-700 mx-auto my-2.5 sm:hidden shrink-0" />
+
           {/* Header */}
           <div className="p-5 border-b border-[var(--card-border)] flex items-center justify-between gap-3 bg-[var(--bg-page)]/50">
             <div className="flex items-center gap-3">
@@ -202,9 +208,18 @@ export default function ServiceOrderSheet({ item, onClose }: ServiceOrderSheetPr
                   />
                 </div>
 
+                {errorMsg && (
+                  <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-500 text-xs font-semibold animate-in fade-in">
+                    {errorMsg}
+                  </div>
+                )}
+
                 <div className="flex gap-2 pt-2">
                   <button
-                    onClick={() => setStep('package')}
+                    onClick={() => {
+                      setStep('package');
+                      setErrorMsg('');
+                    }}
                     className="py-3 px-4 rounded-2xl border border-[var(--card-border)] text-xs font-bold hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
                   >
                     <ArrowLeft className="w-4 h-4" />

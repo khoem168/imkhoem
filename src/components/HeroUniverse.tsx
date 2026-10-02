@@ -137,44 +137,46 @@ export default function HeroUniverse() {
         </motion.p>
 
         {/* Action Button Hierarchy: Orange Primary CTA + Quiet Secondary CTAs */}
-        <motion.div variants={itemVariants} className="mt-8 flex flex-wrap justify-center items-center gap-3">
+        <motion.div variants={itemVariants} className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-2.5 sm:gap-3 max-w-lg mx-auto">
           {/* Strong Primary CTA */}
           <motion.a
             whileHover={{ y: -2, scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileTap={{ scale: 0.96 }}
             href="https://www.khoemstore.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-orange-400 to-orange-500 hover:from-orange-400 hover:to-orange-600 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_12px_30px_rgba(249,115,22,.28)] transition-shadow cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-orange-400 to-orange-500 hover:from-orange-400 hover:to-orange-600 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white shadow-[0_12px_30px_rgba(249,115,22,.28)] transition-all cursor-pointer"
           >
             <Gamepad2 className="w-4 h-4" />
             <span>{language === 'kh' ? 'ចូលទៅកាន់ KHOEMSTORE ↗' : 'Explore KHOEMSTORE'}</span>
             <ArrowUpRight className="w-4 h-4" />
           </motion.a>
 
-          {/* Quiet Secondary CTA */}
-          <motion.a
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            href="#tools"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[.06] hover:bg-white/90 dark:hover:bg-white/[.10] px-6 py-3.5 text-xs sm:text-sm font-semibold text-[var(--text-primary)] backdrop-blur-xl transition-all cursor-pointer shadow-xs"
-          >
-            <Zap className="w-4 h-4 text-amber-500" />
-            <span>{language === 'kh' ? 'រុករកឧបករណ៍ ២៤+' : 'Browse free tools'}</span>
-          </motion.a>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            {/* Quiet Secondary CTA */}
+            <motion.a
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              href="#tools"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[.06] hover:bg-white/90 dark:hover:bg-white/[.10] px-4 sm:px-6 py-3.5 text-xs sm:text-sm font-semibold text-[var(--text-primary)] backdrop-blur-xl transition-all cursor-pointer shadow-xs"
+            >
+              <Zap className="w-4 h-4 text-amber-500" />
+              <span>{language === 'kh' ? 'ឧបករណ៍ ២៤+' : 'Free Tools'}</span>
+            </motion.a>
 
-          {/* Quiet Tertiary CTA */}
-          <motion.a
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            href="https://t.me/heangchhengkhoem"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[.06] hover:bg-white/90 dark:hover:bg-white/[.10] px-6 py-3.5 text-xs sm:text-sm font-semibold text-[var(--text-primary)] backdrop-blur-xl transition-all cursor-pointer shadow-xs"
-          >
-            <Send className="w-4 h-4 text-sky-500" />
-            <span>Telegram</span>
-          </motion.a>
+            {/* Quiet Tertiary CTA */}
+            <motion.a
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              href="https://t.me/heangchhengkhoem"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/[.06] hover:bg-white/90 dark:hover:bg-white/[.10] px-4 sm:px-6 py-3.5 text-xs sm:text-sm font-semibold text-[var(--text-primary)] backdrop-blur-xl transition-all cursor-pointer shadow-xs"
+            >
+              <Send className="w-4 h-4 text-sky-500" />
+              <span>Telegram</span>
+            </motion.a>
+          </div>
         </motion.div>
 
         {/* Command Search Bar (⌘K / Ctrl+K) */}

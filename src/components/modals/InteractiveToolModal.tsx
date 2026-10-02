@@ -752,6 +752,9 @@ export default function InteractiveToolModal() {
         className={`animate-spring-window w-full ${modalWidthClass} bg-[var(--card-solid)] border border-white/20 dark:border-white/10 sm:rounded-[2rem] rounded-t-[2rem] rounded-b-none sm:rounded-b-[2rem] shadow-2xl overflow-hidden text-[var(--text-primary)] flex flex-col max-h-[92vh] sm:max-h-[88vh]`}
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Mobile Sheet Grabber Handle */}
+        <div className="w-12 h-1.5 rounded-full bg-stone-300 dark:bg-stone-700 mx-auto my-2.5 sm:hidden shrink-0" />
+
         {/* Vision Window Title Bar */}
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-[var(--card-border)] bg-[var(--card-bg)] backdrop-blur-xl">
           {/* Traffic Light Dots */}
@@ -2108,11 +2111,11 @@ export default function InteractiveToolModal() {
         </div>
 
         {/* Window Footer Status */}
-        <div className="px-5 py-3 border-t border-[var(--card-border)] bg-[var(--card-bg)] backdrop-blur-xl flex items-center justify-between text-[11px] text-[var(--text-muted)] font-mono">
+        <div className="px-5 pt-3 pb-6 sm:pb-3 border-t border-[var(--card-border)] bg-[var(--card-bg)] backdrop-blur-xl flex items-center justify-between text-[11px] text-[var(--text-muted)] font-mono">
           <span>Engineered by Heang Chhengkhoem</span>
           <button
             onClick={() => setActiveTool(null)}
-            className="px-3 py-1 rounded-lg border border-[var(--card-border)] bg-[var(--card-solid)] text-[var(--text-primary)] hover:border-amber-500 text-xs transition-colors"
+            className="px-3.5 py-1.5 rounded-lg border border-[var(--card-border)] bg-[var(--card-solid)] text-[var(--text-primary)] hover:border-amber-500 active:scale-95 text-xs font-semibold transition-all cursor-pointer"
           >
             Done
           </button>

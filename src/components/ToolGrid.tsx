@@ -74,7 +74,7 @@ export default function ToolGrid() {
         </div>
 
         {/* Minimalist Filter Category Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none -mx-1 px-1 touch-pan-x">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -82,10 +82,10 @@ export default function ToolGrid() {
                 setSelectedCategory(cat.id);
                 setShowAll(false);
               }}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 active:scale-95 cursor-pointer ${
                 selectedCategory === cat.id
-                  ? 'bg-amber-500 text-white shadow-sm'
-                  : 'bg-[var(--card-solid)] border border-[var(--card-border)] text-[var(--text-secondary)] hover:text-amber-500'
+                  ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm font-bold'
+                  : 'bg-[var(--card-solid)] border border-[var(--card-border)] text-[var(--text-secondary)] hover:text-amber-500 hover:border-amber-500/40'
               }`}
             >
               {cat.label}

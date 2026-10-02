@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Kantumruy_Pro, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { ThemeLanguageProvider } from '@/context/ThemeLanguageContext';
@@ -14,6 +14,17 @@ const kantumruy = Kantumruy_Pro({
   variable: '--font-kantumruy',
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f7f8fb' },
+    { media: '(prefers-color-scheme: dark)', color: '#080a0f' },
+  ],
+  viewportFit: 'cover',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://heangchhengkhoem.com'),
@@ -52,7 +63,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="km" className={`${jakarta.variable} ${kantumruy.variable} dark`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col font-sans antialiased selection:bg-cyan-500 selection:text-black">
+      <body className="min-h-screen flex flex-col font-sans antialiased selection:bg-amber-500 selection:text-white">
         <ThemeLanguageProvider>
           {children}
         </ThemeLanguageProvider>

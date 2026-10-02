@@ -150,6 +150,8 @@ export default function ServicesShowcase() {
         ref={scrollContainerRef}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
         className="relative overflow-x-auto scrollbar-none py-2 -mx-2 px-2"
       >
         <div 
@@ -160,7 +162,7 @@ export default function ServicesShowcase() {
             <div
               key={`${item.id}-${idx}`}
               onClick={() => setSelectedItem(item)}
-              className="group relative shrink-0 w-[270px] sm:w-[290px] h-[110px] sm:h-[115px] overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[var(--card-solid)]/95 dark:bg-zinc-900/90 p-3 flex items-center justify-between gap-3 shadow-sm hover:shadow-lg dark:hover:border-amber-500/50 hover:border-amber-500/60 transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none"
+              className="group relative shrink-0 w-[270px] sm:w-[290px] h-[110px] sm:h-[115px] overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[var(--card-solid)]/95 dark:bg-zinc-900/90 p-3 flex items-center justify-between gap-3 shadow-sm hover:shadow-lg dark:hover:border-amber-500/50 hover:border-amber-500/60 active:scale-[0.98] transition-all duration-300 hover:-translate-y-1 cursor-pointer select-none"
             >
               {/* Left Column: Title, Price Pill, Single Action */}
               <div className="relative z-10 flex flex-col justify-between h-full min-w-0 pr-1 flex-1">

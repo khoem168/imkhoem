@@ -301,7 +301,7 @@ export default function ToolCard({ tool, onOpen }: ToolCardProps) {
   return (
     <div
       onClick={() => onOpen(tool)}
-      className="vision-glass p-3.5 flex flex-col items-center justify-between text-center cursor-pointer group min-h-[140px] select-none hover:border-amber-500/50 transition-all duration-200"
+      className="vision-glass p-3.5 flex flex-col items-center justify-between text-center cursor-pointer group min-h-[140px] select-none hover:border-amber-500/50 active:scale-[0.96] hover:-translate-y-1 transition-all duration-200"
     >
       {/* Clean 3D Squircle Icon with Specular Sheen */}
       <div className="my-auto pt-1">
@@ -310,10 +310,10 @@ export default function ToolCard({ tool, onOpen }: ToolCardProps) {
 
       {/* Clean Title & Category Badge */}
       <div className="w-full mt-2">
-        <div className="text-[11px] sm:text-xs font-semibold text-[var(--text-primary)] group-hover:text-amber-500 transition-colors line-clamp-2 leading-snug min-h-[2.4em] flex items-center justify-center">
+        <div className="text-[11px] sm:text-xs font-bold text-[var(--text-primary)] group-hover:text-amber-500 transition-colors line-clamp-2 leading-snug min-h-[2.4em] flex items-center justify-center">
           {tool.name[language]}
         </div>
-        <div className="text-[9px] text-[var(--text-muted)] font-mono uppercase tracking-wider mt-1 px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/80 inline-block border border-[var(--card-border)]">
+        <div className="text-[9px] text-[var(--text-muted)] font-mono font-semibold uppercase tracking-wider mt-1 px-2 py-0.5 rounded-full bg-stone-100 dark:bg-stone-800/80 inline-block border border-[var(--card-border)]">
           {tool.category}
         </div>
       </div>

@@ -199,11 +199,18 @@ export default function SpotlightSearch() {
             {query && (
               <button 
                 onClick={() => setQuery('')}
-                className="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                className="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] p-1"
+                aria-label="Clear search"
               >
                 <X className="w-4 h-4" />
               </button>
             )}
+            <button
+              onClick={() => setSearchOpen(false)}
+              className="sm:hidden text-xs font-bold text-amber-500 px-2.5 py-1 rounded-lg hover:bg-amber-500/10 transition-colors cursor-pointer"
+            >
+              {language === 'kh' ? 'បោះបង់' : 'Cancel'}
+            </button>
             <kbd className="hidden sm:inline-flex items-center gap-0.5 px-2 py-0.5 text-[10px] font-mono text-[var(--text-muted)] border border-[var(--card-border)] rounded-md bg-[var(--bg-page)]">
               ESC
             </kbd>

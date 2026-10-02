@@ -34,15 +34,19 @@ export default function DynamicIsland() {
   const [moreMenuOpen, setMoreMenuOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement>(null);
 
-  // Close more menu when clicking outside
+  // Close more menu when clicking outside (mouse and touch)
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
         setMoreMenuOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
   }, []);
 
   const navLinks = [
@@ -62,14 +66,14 @@ export default function DynamicIsland() {
         transition={{ type: 'spring', stiffness: 180, damping: 22 }}
         className="fixed left-1/2 top-4 z-50 w-[min(1180px,calc(100%-24px))] -translate-x-1/2"
       >
-        <div className="flex h-16 items-center justify-between gap-3 sm:gap-4 rounded-[24px] border border-white/70 dark:border-white/10 bg-white/70 dark:bg-zinc-900/65 px-4 sm:px-5 shadow-[0_12px_40px_rgba(15,23,42,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all">
+        <div className="flex h-16 items-center justify-between gap-2 sm:gap-4 rounded-[24px] border border-white/70 dark:border-white/10 bg-white/70 dark:bg-zinc-900/65 px-3 sm:px-5 shadow-[0_12px_40px_rgba(15,23,42,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all">
           
           {/* Left: Brand Identity & Avatar */}
           <Link 
             href="/" 
-            className="flex min-w-0 items-center gap-3 group focus:outline-none shrink-0"
+            className="flex min-w-0 items-center gap-2 sm:gap-3 group focus:outline-none shrink"
           >
-            <div className="h-10 w-10 rounded-full overflow-hidden ring-2 ring-amber-500/40 shadow-sm relative shrink-0">
+            <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-full overflow-hidden ring-2 ring-amber-500/40 shadow-sm relative shrink-0">
               <Image
                 src="/avatar.jpg"
                 alt="heangchhengkhoem"
@@ -80,12 +84,13 @@ export default function DynamicIsland() {
               />
             </div>
             <div className="min-w-0">
-              <div className="truncate font-bold text-sm tracking-tight text-[var(--text-primary)] group-hover:text-amber-500 transition-colors">
+              <div className="truncate font-bold text-xs sm:text-sm tracking-tight text-[var(--text-primary)] group-hover:text-amber-500 transition-colors">
                 heangchhengkhoem
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] font-mono text-[var(--text-muted)]">
+              <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-mono text-[var(--text-muted)]">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Vision OS 27</span>
+                <span className="hidden xs:inline">Vision OS 27</span>
+                <span className="xs:hidden">v27</span>
               </div>
             </div>
           </Link>

@@ -122,7 +122,7 @@ export default function OwnerConnect() {
                 href={link.href}
                 target={link.href.startsWith('mailto') ? '_self' : '_blank'}
                 rel={link.href.startsWith('mailto') ? '' : 'noopener noreferrer'}
-                className={`p-3 rounded-2xl border border-[var(--card-border)] ${link.color} transition-all flex items-center justify-between gap-2.5 group cursor-pointer shadow-xs hover:-translate-y-0.5`}
+                className={`p-3 rounded-2xl border border-[var(--card-border)] ${link.color} transition-all flex items-center justify-between gap-2.5 group cursor-pointer shadow-xs hover:-translate-y-0.5 active:scale-95`}
               >
                 <div className="flex items-center gap-2 min-w-0">
                   <div className="shrink-0">{link.icon}</div>

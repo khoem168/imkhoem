@@ -89,7 +89,7 @@ export default function TelegramEcosystem() {
               href={bot.link}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-4 rounded-2xl border border-[var(--card-border)] bg-[var(--card-solid)] flex items-start gap-3.5 group cursor-pointer shadow-xs hover:-translate-y-0.5 ${design.hover} transition-all`}
+              className={`p-4 rounded-2xl border border-[var(--card-border)] bg-[var(--card-solid)] flex items-start gap-3.5 group cursor-pointer shadow-xs hover:-translate-y-0.5 active:scale-[0.98] ${design.hover} transition-all`}
             >
               <div className={`w-10 h-10 rounded-xl border ${design.color} flex items-center justify-center shrink-0`}>
                 {design.icon}
