@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'motion/react';
 
 interface TiltCard3DProps {
   children: React.ReactNode;
@@ -28,6 +28,8 @@ export default function TiltCard3D({
 
   const glareX = useSpring(useTransform(mouseX, [-0.5, 0.5], [20, 80]), springConfig);
   const glareY = useSpring(useTransform(mouseY, [-0.5, 0.5], [20, 80]), springConfig);
+
+  const glareBackground = useMotionTemplate`radial-gradient(circle 220px at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.2), transparent 75%)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -69,7 +71,7 @@ export default function TiltCard3D({
           <motion.div
             className="pointer-events-none absolute inset-0 rounded-[inherit] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{
-              background: `radial-gradient(circle 200px at ${glareX.get()}% ${glareY.get()}%, rgba(255, 255, 255, 0.25), transparent 70%)`,
+              background: glareBackground,
             }}
           />
         )}

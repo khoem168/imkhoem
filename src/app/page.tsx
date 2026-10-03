@@ -4,6 +4,7 @@ import React from 'react';
 import DynamicIsland from '@/components/DynamicIsland';
 import MobileDock from '@/components/MobileDock';
 import HeroUniverse from '@/components/HeroUniverse';
+import ModernBentoGrid from '@/components/ModernBentoGrid';
 import ServicesShowcase from '@/components/ServicesShowcase';
 import FeaturedProjects from '@/components/FeaturedProjects';
 import ToolGrid from '@/components/ToolGrid';
@@ -28,6 +29,9 @@ export default function Home() {
 
       {/* 2. Hero Section (Vision OS 27) */}
       <HeroUniverse />
+
+      {/* 2.5 Modern Bento Grid Showcase & Live Capabilities */}
+      <ModernBentoGrid />
 
       {/* 3. Services Strip / Marquee */}
       <ServicesShowcase />

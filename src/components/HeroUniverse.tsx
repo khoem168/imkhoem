@@ -4,20 +4,16 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { usePortal } from '@/context/ThemeLanguageContext';
 import { 
-  Sparkles, 
-  Search, 
   Gamepad2, 
   Zap, 
   ArrowUpRight,
   Send,
   Wrench,
   ShieldCheck,
-  Users
+  Users,
+  Search
 } from 'lucide-react';
-
 import type { Variants } from 'motion/react';
-import SpatialProfile3D from './SpatialProfile3D';
-import SpatialCodeTerminal from './SpatialCodeTerminal';
 
 const containerVariants: Variants = {
   hidden: {},
@@ -32,14 +28,14 @@ const itemVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 18,
-    filter: 'blur(8px)',
+    filter: 'blur(6px)',
   },
   visible: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
     transition: {
-      duration: 0.7,
+      duration: 0.6,
       ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
     },
   },
@@ -77,8 +73,8 @@ export default function HeroUniverse() {
       badgeBg: 'bg-emerald-500/10 text-emerald-500',
     },
     {
-      value: '50K+',
-      label: language === 'kh' ? 'សហគមន៍សកម្ម' : 'Active Community',
+      value: '75K+',
+      label: language === 'kh' ? 'សហគមន៍ Bot សកម្ម' : 'Bot Network Community',
       subtext: 'Cambodia & Telegram SEA',
       href: 'https://t.me/heangchhengkhoem',
       icon: Users,
@@ -88,7 +84,7 @@ export default function HeroUniverse() {
   ];
 
   return (
-    <section id="home" className="relative overflow-hidden px-4 sm:px-6 pt-32 sm:pt-36 pb-16 max-w-5xl mx-auto w-full text-center">
+    <section id="home" className="relative overflow-hidden px-4 sm:px-6 pt-32 sm:pt-36 pb-12 max-w-5xl mx-auto w-full text-center">
       {/* Visual Depth 1: Soft Animated Ambient Glows */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-36 top-16 h-[500px] w-[500px] rounded-full bg-orange-300/20 dark:bg-orange-500/10 blur-[110px]" />
@@ -101,46 +97,42 @@ export default function HeroUniverse() {
         animate="visible"
         className="relative z-10 mx-auto max-w-4xl"
       >
-        {/* Visual Depth 2: Available Status Capsule */}
-        <motion.div variants={itemVariants} className="inline-block mb-3">
+        {/* Status Capsule: Verified Architect Status */}
+        <motion.div variants={itemVariants} className="inline-block mb-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-300/60 dark:border-white/10 bg-orange-50/70 dark:bg-white/[.06] text-orange-700 dark:text-orange-400 text-xs font-semibold backdrop-blur-xl shadow-xs">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span className="tracking-wide">
-              {language === 'kh' ? 'ប្រព័ន្ធឌីជីថល & ស្ថាបនិក • HEANG CHHENGKHOEM' : 'Building tools & products'}
+            <span className="tracking-wide font-mono text-[11px] sm:text-xs">
+              {language === 'kh' ? '● ONLINE // ស្ថាបនិកប្រព័ន្ធឌីជីថល // ភ្នំពេញ កម្ពុជា' : '● ONLINE // FULL-STACK ARCHITECT // PHNOM PENH, KH 🇰🇭'}
             </span>
             <span className="rounded-full bg-orange-100/90 dark:bg-orange-950/70 px-2 py-0.5 text-[10px] font-mono text-orange-600 dark:text-orange-300 font-bold border border-orange-300/40 dark:border-orange-500/20">
-              Vision OS 27
+              v27.0
             </span>
           </div>
         </motion.div>
 
-        {/* 3D Holographic Developer Spatial Profile */}
+        {/* Confident, High-Status Headline */}
         <motion.div variants={itemVariants}>
-          <SpatialProfile3D />
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-950 dark:text-white leading-[1.12]">
+            Heang Chhengkhoem
+          </h1>
+          <p className="text-lg sm:text-2xl font-bold mt-2 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-500 bg-clip-text text-transparent">
+            {language === 'kh' 
+              ? 'ស្ថាបត្យកម្មឌីជីថលទំនើប • បណ្តាញ Bot ស្វ័យប្រវត្ត & ឧបករណ៍ AI' 
+              : 'Digital Platform Architect & Systems Creator'}
+          </p>
         </motion.div>
 
-        {/* Clean, High-Contrast Headline */}
-        <motion.h1 
-          variants={itemVariants} 
-          className="text-balance text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-950 dark:text-white leading-[1.14] mt-4"
-        >
-          <span>Full-Stack Platform &</span>
-          <span className="block mt-1 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-500 bg-clip-text text-transparent">
-            {language === 'kh' ? 'ឧបករណ៍បច្ចេកវិទ្យា AI ទំនើប' : 'AI Tools for Creators'}
-          </span>
-        </motion.h1>
-
-        {/* Subtitle with Calibrated Reading Width (640-720px) */}
+        {/* Calibrated Reading Width Subtitle */}
         <motion.p 
           variants={itemVariants} 
-          className="mx-auto mt-6 max-w-2xl text-sm sm:text-base leading-relaxed text-slate-600 dark:text-zinc-400"
+          className="mx-auto mt-5 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-slate-600 dark:text-zinc-400"
         >
           {language === 'kh' 
-            ? 'បណ្ដុំស្នាដៃ និងគម្រោងផ្ទាល់ខ្លួនរបស់ Heang Chhengkhoem។ វេទិកាហាង KHOEMSTORE (400+ ហ្គេម), បណ្តាញ Telegram Bots ស្វ័យប្រវត្ត និងឧបករណ៍ AI & Web Tools ឥតគិតថ្លៃជាង ២០+ ដំណើរការលើ Browser ផ្ទាល់។'
-            : 'Digital products, automation, Telegram bots, AI utilities and modern web experiences engineered for high speed and scale.'}
+            ? 'បណ្ដុំស្នាដៃ និងប្រព័ន្ធវិស្វកម្មផ្ទាល់ខ្លួនរបស់ Heang Chhengkhoem។ វេទិកាពាណិជ្ជកម្ម KHOEMSTORE (400+ ហ្គេម & ABA KHQR), បណ្តាញ Telegram Bots ស្វ័យប្រវត្ត និងឈុតឧបករណ៍ AI & IT Web Tools ឥតគិតថ្លៃជាង ២០+ ដំណើរការលើ Browser ផ្ទាល់។'
+            : 'Personal engineering suite of Heang Chhengkhoem. Creator of KHOEMSTORE (400+ games & instant ABA KHQR), autonomous Telegram bot networks, and 24+ private client-side web utilities.'}
         </motion.p>
 
         {/* Action Button Hierarchy: Orange Primary CTA + Quiet Secondary CTAs */}
@@ -204,10 +196,10 @@ export default function HeroUniverse() {
           </div>
         </motion.div>
 
-        {/* Visual Depth 3: Interactive Product / Stats Cards */}
+        {/* Visual Depth 3: Key Platform Metric Cards */}
         <motion.div 
           variants={itemVariants} 
-          className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 max-w-4xl mx-auto"
+          className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 max-w-4xl mx-auto"
         >
           {metricCards.map((card, i) => {
             const Icon = card.icon;
@@ -236,11 +228,6 @@ export default function HeroUniverse() {
               </motion.a>
             );
           })}
-        </motion.div>
-
-        {/* 4D Live-Coding Holographic Terminal */}
-        <motion.div variants={itemVariants} className="mt-8">
-          <SpatialCodeTerminal />
         </motion.div>
       </motion.div>
     </section>
