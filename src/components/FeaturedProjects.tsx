@@ -8,12 +8,13 @@ import { featuredProjects } from '@/data/portalData';
 import { 
   Sparkles, 
   ArrowRight, 
-  ArrowUpRight,
+  ArrowUpRight, 
   Gamepad2, 
   Cpu, 
   Bot, 
-  LayoutGrid
+  LayoutGrid 
 } from 'lucide-react';
+import TiltCard3D from './TiltCard3D';
 
 export default function FeaturedProjects() {
   const { language, t } = usePortal();
@@ -104,62 +105,64 @@ export default function FeaturedProjects() {
           const isSpan = idx === 3 || idx === 4;
 
           return (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.05 }}
-              whileHover={{ y: -4 }}
-              className={`rounded-[24px] border border-[var(--card-border)] bg-[var(--card-solid)] p-5 sm:p-6 flex flex-col justify-between group shadow-sm hover:shadow-md ${theme.accentBorder} transition-all active:scale-[0.98] ${
-                isSpan ? 'lg:col-span-1' : ''
-              }`}
+            <TiltCard3D 
+              key={project.id} 
+              maxTilt={6}
+              className={isSpan ? 'lg:col-span-1' : ''}
             >
-              <div>
-                {/* Top Row: Icon + Category Badge */}
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${theme.iconBg} text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform`}>
-                    <ProjectIcon className="w-5 h-5" />
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                className={`h-full rounded-[24px] border border-[var(--card-border)] bg-[var(--card-solid)] p-5 sm:p-6 flex flex-col justify-between group shadow-sm hover:shadow-xl ${theme.accentBorder} transition-all active:scale-[0.98]`}
+              >
+                <div>
+                  {/* Top Row: Icon + Category Badge */}
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <div className={`w-11 h-11 rounded-2xl bg-gradient-to-br ${theme.iconBg} text-white flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform`}>
+                      <ProjectIcon className="w-5 h-5" />
+                    </div>
+
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase border ${theme.badgeColor}`}>
+                      {project.category[language]}
+                    </span>
                   </div>
 
-                  <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase border ${theme.badgeColor}`}>
-                    {project.category[language]}
-                  </span>
+                  {/* Title & Short Copy */}
+                  <h3 className={`text-lg font-bold text-[var(--text-primary)] ${theme.accentText} transition-colors line-clamp-1`}>
+                    {project.title[language]}
+                  </h3>
+
+                  <p className="text-xs text-[var(--text-secondary)] mt-1.5 line-clamp-2 leading-relaxed">
+                    {project.subtitle[language]}
+                  </p>
+
+                  {/* 2-3 Clean Tags Maximum */}
+                  <div className="flex flex-wrap gap-1.5 my-4">
+                    {displayTags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2 py-0.5 rounded-md bg-[var(--bg-page)] text-[10px] font-mono text-[var(--text-secondary)] border border-[var(--card-border)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Title & Short Copy */}
-                <h3 className={`text-lg font-bold text-[var(--text-primary)] ${theme.accentText} transition-colors line-clamp-1`}>
-                  {project.title[language]}
-                </h3>
-
-                <p className="text-xs text-[var(--text-secondary)] mt-1.5 line-clamp-2 leading-relaxed">
-                  {project.subtitle[language]}
-                </p>
-
-                {/* 2-3 Clean Tags Maximum */}
-                <div className="flex flex-wrap gap-1.5 my-4">
-                  {displayTags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2 py-0.5 rounded-md bg-[var(--bg-page)] text-[10px] font-mono text-[var(--text-secondary)] border border-[var(--card-border)]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                {/* Single Clear Action: Link to Dedicated Project Detail Route */}
+                <div className="pt-3 border-t border-[var(--card-border)]/60">
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="w-full py-2.5 px-3 rounded-xl border border-[var(--card-border)] bg-[var(--bg-page)] hover:bg-amber-500/10 hover:border-amber-500/40 active:scale-[0.98] text-xs font-bold text-[var(--text-primary)] hover:text-amber-500 flex items-center justify-between transition-all group/link"
+                  >
+                    <span>{language === 'kh' ? 'មើលព័ត៌មានលម្អិត' : 'View Project Details'}</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-              </div>
-
-              {/* Single Clear Action: Link to Dedicated Project Detail Route */}
-              <div className="pt-3 border-t border-[var(--card-border)]/60">
-                <Link
-                  href={`/projects/${project.id}`}
-                  className="w-full py-2.5 px-3 rounded-xl border border-[var(--card-border)] bg-[var(--bg-page)] hover:bg-amber-500/10 hover:border-amber-500/40 active:scale-[0.98] text-xs font-bold text-[var(--text-primary)] hover:text-amber-500 flex items-center justify-between transition-all group/link"
-                >
-                  <span>{language === 'kh' ? 'មើលព័ត៌មានលម្អិត' : 'View Project Details'}</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </motion.div>
+              </motion.div>
+            </TiltCard3D>
           );
         })}
       </div>

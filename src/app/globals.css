@@ -460,4 +460,169 @@ html, body {
   animation-play-state: paused;
 }
 
+/* ==========================================================================
+   3D & 4D SPATIAL VISUALIZATION UTILITIES & KEYFRAMES (iOS 27 / VISION OS)
+   ========================================================================== */
+.preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
 
+.perspective-800 {
+  perspective: 800px;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* 3D Holographic Orbit Ring Animations */
+@keyframes orbitRingAlpha {
+  0% {
+    transform: rotateX(68deg) rotateY(15deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(68deg) rotateY(15deg) rotateZ(360deg);
+  }
+}
+
+@keyframes orbitRingBeta {
+  0% {
+    transform: rotateX(-55deg) rotateY(35deg) rotateZ(360deg);
+  }
+  100% {
+    transform: rotateX(-55deg) rotateY(35deg) rotateZ(0deg);
+  }
+}
+
+@keyframes orbitRingGamma {
+  0% {
+    transform: rotateX(80deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(80deg) rotateZ(360deg);
+  }
+}
+
+.animate-orbit-ring-1 {
+  animation: orbitRingAlpha 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.animate-orbit-ring-2 {
+  animation: orbitRingBeta 26s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.animate-orbit-ring-3 {
+  animation: orbitRingGamma 16s linear infinite;
+  transform-style: preserve-3d;
+}
+
+/* Holographic Laser Scanline across Avatar */
+@keyframes hologramScanBeam {
+  0% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+}
+
+.animate-hologram-scan {
+  animation: hologramScanBeam 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* 3D Tech Satellite Floating Bobbing */
+@keyframes floatSatellite1 {
+  0%, 100% {
+    transform: translateZ(45px) translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateZ(60px) translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes floatSatellite2 {
+  0%, 100% {
+    transform: translateZ(40px) translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateZ(55px) translateY(7px) rotate(-1.5deg);
+  }
+}
+
+@keyframes floatSatellite3 {
+  0%, 100% {
+    transform: translateZ(50px) translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateZ(65px) translateY(-6px) rotate(-1deg);
+  }
+}
+
+@keyframes floatSatellite4 {
+  0%, 100% {
+    transform: translateZ(35px) translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateZ(50px) translateY(8px) rotate(1.2deg);
+  }
+}
+
+.animate-satellite-1 {
+  animation: floatSatellite1 5s ease-in-out infinite;
+}
+
+.animate-satellite-2 {
+  animation: floatSatellite2 5.8s ease-in-out infinite 0.8s;
+}
+
+.animate-satellite-3 {
+  animation: floatSatellite3 6.4s ease-in-out infinite 1.6s;
+}
+
+.animate-satellite-4 {
+  animation: floatSatellite4 5.2s ease-in-out infinite 2.4s;
+}
+
+/* Terminal Cursor Blinking */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: cursorBlink 0.9s infinite;
+}
+
+/* Spatial Glow Pulse */
+@keyframes spatialPulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.25), 0 0 50px rgba(14, 165, 233, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(245, 158, 11, 0.45), 0 0 80px rgba(14, 165, 233, 0.35);
+  }
+}
+
+.animate-spatial-pulse {
+  animation: spatialPulse 4s ease-in-out infinite;
+}

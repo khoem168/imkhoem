@@ -16,6 +16,8 @@ import {
 } from 'lucide-react';
 
 import type { Variants } from 'motion/react';
+import SpatialProfile3D from './SpatialProfile3D';
+import SpatialCodeTerminal from './SpatialCodeTerminal';
 
 const containerVariants: Variants = {
   hidden: {},
@@ -100,7 +102,7 @@ export default function HeroUniverse() {
         className="relative z-10 mx-auto max-w-4xl"
       >
         {/* Visual Depth 2: Available Status Capsule */}
-        <motion.div variants={itemVariants} className="inline-block mb-6">
+        <motion.div variants={itemVariants} className="inline-block mb-3">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-300/60 dark:border-white/10 bg-orange-50/70 dark:bg-white/[.06] text-orange-700 dark:text-orange-400 text-xs font-semibold backdrop-blur-xl shadow-xs">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -115,10 +117,15 @@ export default function HeroUniverse() {
           </div>
         </motion.div>
 
+        {/* 3D Holographic Developer Spatial Profile */}
+        <motion.div variants={itemVariants}>
+          <SpatialProfile3D />
+        </motion.div>
+
         {/* Clean, High-Contrast Headline */}
         <motion.h1 
           variants={itemVariants} 
-          className="text-balance text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-950 dark:text-white leading-[1.14]"
+          className="text-balance text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-950 dark:text-white leading-[1.14] mt-4"
         >
           <span>Full-Stack Platform &</span>
           <span className="block mt-1 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-500 bg-clip-text text-transparent">
@@ -229,6 +236,11 @@ export default function HeroUniverse() {
               </motion.a>
             );
           })}
+        </motion.div>
+
+        {/* 4D Live-Coding Holographic Terminal */}
+        <motion.div variants={itemVariants} className="mt-8">
+          <SpatialCodeTerminal />
         </motion.div>
       </motion.div>
     </section>
